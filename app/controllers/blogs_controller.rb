@@ -38,7 +38,7 @@ class BlogsController < ApplicationController # < で継承している
       redirect_to blogs_path, notice: "ブログを編集しました！"
     else
       render 'edit'
-    end    
+    end
   end
   
   def destroy
