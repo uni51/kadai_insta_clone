@@ -1,3 +1,5 @@
+<div class="container">
+
 <%= form_with(model: @blog, local: true, url: choose_new_or_edit) do |form| %>
 
   <% if @blog.errors.any? %>
@@ -10,17 +12,18 @@
       </ul>
     </div>
   <% end %>
-  
-  <div class="blog_title">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+
+  <div class="row mb_20">
+    <%= form.label :title, class: 'col-sm-2' %>
+    <%= form.text_field :title, class: 'col-sm-10' %>
   </div>
-  <div class="blog_title">
-    <%= form.label :content %>
-    <%= form.text_field :content %>
+  <div class="row mb_20">
+    <%= form.label :content, class: 'col-sm-2' %>
+    <%= form.text_area :content, class: 'col-sm-10' %>
   </div>
-  <%= form.submit %>
+  <div class="row center">
+    <%= form.submit :class => "square_btn" %>
+  </div>
 <% end %>
 
-<br>
-<%= link_to 'ブログ一覧画面にもどる', blogs_path %>
+</div>
