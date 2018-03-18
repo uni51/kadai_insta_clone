@@ -1,17 +1,15 @@
-<div class="container">
-
 <%= form_with(model: @blog, local: true, url: choose_new_or_edit) do |form| %>
 
-  <% if @blog.errors.any? %>
-    <div class="alert alert-warning">
-      <h2><%= @blog.errors.count %>件のエラーがあります。</h2>
-      <ul>
+<% if @blog.errors.any? %>
+  <div class="alert alert-warning">
+    <h2><%= @blog.errors.count %>件のエラーがあります。</h2>
+    <ul>
       <% @blog.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
+    </ul>
+  </div>
+<% end %>
 
   <div class="row mb_20">
     <%= form.label :title, class: 'col-sm-2' %>
@@ -25,5 +23,3 @@
     <%= form.submit :class => "square_btn" %>
   </div>
 <% end %>
-
-</div>

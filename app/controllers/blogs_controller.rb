@@ -1,4 +1,5 @@
 class BlogsController < ApplicationController # < で継承している
+  before_action :require_user_logged_in, only: [:new, :edit, :show]
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
 
   def top

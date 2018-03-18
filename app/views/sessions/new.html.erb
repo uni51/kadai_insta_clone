@@ -1,14 +1,17 @@
-<h1>Log in</h1>
-
 <%= render 'layouts/flash_messages' %>
 
+<h1>Log in</h1>
+
 <%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
-
-  <%= f.label :email %>
-  <%= f.email_field :email %>
-
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-
-  <%= f.submit "Log in" %>
+  <div class="row mb_20">
+    <%= f.label :email, class: 'col-sm-2' %>
+    <%= f.email_field :email, class: 'col-sm-10' %>
+  </div>
+  <div class="row mb_20">
+    <%= f.label :password, class: 'col-sm-2' %>
+    <%= f.password_field :password, class: 'col-sm-10' %>
+  </div>
+  <div class="row center">
+    <%= f.submit "Log in" %>
+  </div>
 <% end %>
