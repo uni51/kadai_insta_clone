@@ -20,7 +20,11 @@ class BlogsController < ApplicationController # < で継承している
   end
 
   def create
-    @blog = Blog.new(blog_params)
+    # @blog = Blog.new(blog_params)
+    # @blog.user_id = current_user.id
+    # 下記の1行は、上記の2行をまとめて記述している
+    @blog = current_user.blogs.build(blog_params)
+    # binding.pry
     if @blog.save
       # 一覧画面へ遷移して"ブログを作成しました！"とメッセージを表示します。
       flash[:success] = 'ブログを作成しました！'
@@ -32,7 +36,8 @@ class BlogsController < ApplicationController # < で継承している
   end
 
   def show
-    @blog = Blog.find(params[:id])
+    # @blog = Blog.find(params[:id])
+    @favorite = current_user.favorites.find_by(blog_id: @blog.id)
   end
 
   def edit
@@ -55,7 +60,7 @@ class BlogsController < ApplicationController # < で継承している
 
   def confirm
     @blog = Blog.new(blog_params)
-    render :new if @blog.invalid?
+    # render :new if @blog.invalid?
   end
 
   private

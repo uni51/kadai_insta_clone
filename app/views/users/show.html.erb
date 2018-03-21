@@ -6,3 +6,16 @@
   <div class="col-sm-2">メールアドレス</div>
   <div class="col-sm-10"><%= @user.email %></div>
 </div>
+
+<hr>
+
+<h2><%= @user.name %>のお気に入りのBlog</h2>
+
+<div class="row">
+  <% @favorite_blogs.each do |blog| %>
+    <div class="col-xs-12 col-md-6 blog-panel">
+      <h2><%= blog.title %></h2>
+      <p><%= blog.content %></p>
+    </div>
+  <% end %>
+</div>
