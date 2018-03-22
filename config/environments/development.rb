@@ -31,6 +31,10 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
+  # ローカル環境メール送信用
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  config.action_mailer.delivery_method = :letter_opener
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
@@ -53,5 +57,5 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   # better_errors用に追記
-  BetterErrors::Middleware.allow_ip! "0.0.0.0/0"    
+  BetterErrors::Middleware.allow_ip! "0.0.0.0/0"
 end

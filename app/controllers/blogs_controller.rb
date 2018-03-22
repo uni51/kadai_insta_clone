@@ -26,6 +26,8 @@ class BlogsController < ApplicationController # < で継承している
     @blog = current_user.blogs.build(blog_params)
     # binding.pry
     if @blog.save
+      @user = User.find_by(id: current_user.id)
+      ContactMailer.contact_mail(@user,@blog).deliver # 追記 メール送信処理
       # 一覧画面へ遷移して"ブログを作成しました！"とメッセージを表示します。
       flash[:success] = 'ブログを作成しました！'
       redirect_to blogs_path
