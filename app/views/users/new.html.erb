@@ -33,6 +33,13 @@
     <%= f.password_field :password_confirmation, class: 'col-sm-10'  %>
   </div>
 
+  <div class="row mb_20">
+    <%= f.label :icon, class: 'col-sm-2' %>
+    <%= f.file_field :icon, id: :user_icon, class: 'col-sm-10' %>
+    <!-- バリデーションで引っかかった時用の処理 -->
+    <%= f.hidden_field :icon_cache %>
+  </div>
+
   <div class="row center">
     <%= f.submit "Create my account", class: "square_btn" %>
   </div>

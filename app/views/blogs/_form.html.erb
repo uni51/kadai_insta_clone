@@ -19,6 +19,12 @@
     <%= form.label :content, class: 'col-sm-2' %>
     <%= form.text_area :content, class: 'col-sm-10' %>
   </div>
+  <div class="row mb_20">
+    <%= form.label :photo, class: 'col-sm-2' %>
+    <%= form.file_field :photo, id: :blog_photo, class: 'col-sm-10' %>
+    <!-- バリデーションで引っかかった時用の処理 -->
+    <%= form.hidden_field :photo_cache %>
+  </div>
   <div class="row center">
     <%= form.submit :class => "square_btn" %>
   </div>

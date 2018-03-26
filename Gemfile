@@ -64,3 +64,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # 追記（エラーメッセージ日本語化用）
 gem 'rails-i18n'
+
+# 追記 画像アップロード用ファイル
+gem 'carrierwave'
+gem 'mini_magick'

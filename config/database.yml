@@ -6,13 +6,13 @@ default: &default
 
 development:
   <<: *default
-  database: bootstrap_development
+  database: upload_development
 test:
   <<: *default
-  database: bootstrap_test
+  database: upload_test
 
 production:
   <<: *default
-  database: bootstrap_production
+  database: upload_production
   username: sample
   password: <%= ENV['SAMPLE_DATABASE_PASSWORD'] %>

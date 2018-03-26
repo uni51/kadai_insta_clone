@@ -14,6 +14,8 @@ class BlogsController < ApplicationController # < で継承している
   def new
     if params[:back]
       @blog = Blog.new(blog_params)
+      # 画像保存（create）の際に、キャッシュから画像を復元してから保存する
+      @blog.photo.retrieve_from_cache! params[:cache][:photo] if params[:cache][:photo].present?
     else
       @blog = Blog.new  #ビューにデータを渡す(インスタンス変数を定義する)
     end
@@ -24,6 +26,10 @@ class BlogsController < ApplicationController # < で継承している
     # @blog.user_id = current_user.id
     # 下記の1行は、上記の2行をまとめて記述している
     @blog = current_user.blogs.build(blog_params)
+
+    # 画像保存（create）の際に、キャッシュから画像を復元してから保存する
+    @blog.photo.retrieve_from_cache! params[:cache][:photo] if params[:cache][:photo].present?
+
     # binding.pry
     if @blog.save
       @user = User.find_by(id: current_user.id)
@@ -61,13 +67,13 @@ class BlogsController < ApplicationController # < で継承している
   end
 
   def confirm
-    @blog = Blog.new(blog_params)
     # render :new if @blog.invalid?
+    @blog = Blog.new(blog_params)
   end
 
   private
   def blog_params
-    params.require(:blog).permit(:title, :content)
+    params.require(:blog).permit(:title, :content,:photo, :photo_cache)
   end
 
   # idをキーとして値を取得するメソッド
