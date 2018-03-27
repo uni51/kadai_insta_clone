@@ -6,7 +6,7 @@ class PicturesController < ApplicationController # < で継承している
   end
 
   def index
-    @pictures = Picture.all
+    @pictures = Picture.all.order(id: "DESC")
     #binding.pry # pry-railsでブレークポイントを設定して、デバッグ
     #raise # better_errorsでエラー画面を出力させる
   end
@@ -69,6 +69,8 @@ class PicturesController < ApplicationController # < で継承している
   def confirm
     # render :new if @picture.invalid?
     @picture = Picture.new(picture_params)
+    @picture[:user_id] = current_user.id
+    render :new if @picture.invalid? # <=バリデーションチェックNGなら戻す
   end
 
   private

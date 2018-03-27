@@ -3,7 +3,7 @@
 <% if @pictures %>
 <div class="row center">
   <% @pictures.each do |picture| %>
-    <div class="col-xs-12 col-md-12 picture-panel">
+    <div class="col-xs-12 col-md-12 picture-panel mb_50">
 
       <p><%= picture.user.name %>さんの投稿</p>
       <p><%=image_tag picture.photo %></p>
