@@ -1,9 +1,9 @@
 class ContactMailer < ApplicationMailer
   # 以下はローカル環境確認用
-  def contact_mail(user, blog)
+  def contact_mail(user, picture)
    @user = user
-   @blog = blog
+   @picture = picture
 
-   mail to: @user.email, subject: "ブログ作成完了メール"
+   mail to: @user.email, subject: "投稿完了メール"
   end
 end

@@ -1,8 +1,7 @@
-class Blog < ApplicationRecord
+class Picture < ApplicationRecord
   mount_uploader :photo, ImageUploader
   belongs_to :user
 
-  validates :title, presence: true, length: { in: 1..140 }
   validates :content, presence: true, length: { in: 1..140 }
   validates :user_id, presence: true
   validates :photo, presence: true

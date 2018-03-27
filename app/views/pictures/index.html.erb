@@ -1,0 +1,24 @@
+<%= render 'layouts/flash_messages' %>
+
+<% if @pictures %>
+<div class="row center">
+  <% @pictures.each do |picture| %>
+    <div class="col-xs-12 col-md-12 picture-panel">
+
+      <p><%= picture.user.name %>さんの投稿</p>
+      <p><%=image_tag picture.photo %></p>
+      <p><%= picture.content %></p>
+      <p><%= picture.updated_at %></p>
+
+
+      <div class="picture-links">
+        <%= link_to '詳細', picture_path(picture.id), class: 'btn btn-default' %>
+        <% if picture.user == current_user %>
+          <%= link_to '編集', edit_picture_path(picture.id), class: 'btn btn-info' %>
+          <%= link_to '削除', picture_path(picture.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<% end %>

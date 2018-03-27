@@ -1,9 +1,8 @@
 ja:
   activerecord:
     models:
-      blog: ブログ
+      picture: 投稿
     attributes:
-      blog:
-        title: タイトル
-        content: 本文
+      picture:
+        content: 内容
         photo: 画像
